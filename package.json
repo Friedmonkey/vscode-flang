@@ -1,0 +1,45 @@
+{
+    "name": "flang",
+    "displayName": "Flang",
+    "description": "Syntax support for a server language similar to PHP.",
+    "version": "1.0.0",
+    "publisher": "FriedMonkey",
+    "engines": {
+        "vscode": "0.10.x"
+    },
+    "categories": ["Programming Languages", "Snippets"],
+    "repository": {
+		"type": "git",
+		"url": "https://github.com/FriedMonkey/vscode-flang.git"
+	},
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#111111",
+		"theme": "dark"
+	},
+    "scripts": {
+        "update-grammar": "node ../../build/npm/update-grammar.js demyte/language-cshtml grammars/cshtml.json ./syntaxes/ph.tmLanguage.json"
+    },
+    "contributes": {
+        "languages": [{
+            "id": "flang",
+            "extensions": [".flang"],
+            "aliases": ["Flang", "flang"],
+            "mimetypes": ["text/html"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+                "language": "flang",
+                "scopeName": "text.html.flang",
+                "path": "./syntaxes/flang.tmLanguage.json",
+                "embeddedLanguages": {
+                    "section.embedded.source.phtml": "php"
+                }
+            }
+        ],
+        "snippets": [{
+            "language": "flang",
+            "path": "./snippets/flang.snippets.json"
+        }]
+    }
+}
