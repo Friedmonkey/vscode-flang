@@ -1,12 +1,15 @@
 {
 	"comments": {
-		"blockComment": [ "/*", "*/" ]
+		"blockComment": [ "<!--", "-->" ],
+		"singleComment": "//"
 	},
 	"brackets": [
 		["<!--", "-->"],
 		["<", ">"],
 		["{", "}"],
-		["(", ")"]
+		["(", ")"],
+		["<(flang", ")>"],
+		["<(clientFlang", ")>"]
 	],
 	"autoClosingPairs": [
 		{ "open": "{", "close": "}"},

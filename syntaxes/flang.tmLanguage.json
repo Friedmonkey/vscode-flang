@@ -1,146 +1,162 @@
 {
-    "scopeName": "text.html.flang",
-    "injections": {
-        "text.html.basic - (meta.embedded | meta.tag), L:text.html.flang meta.tag, L:text.html.flang source.js": {
-            "patterns": [{
-                    "include": "#flang-macro"
-                }, {
-					"include": "#flang-call"
-				}, {
-					"include": "#flang-client-flang"
-				}
-            ]
+  "scopeName": "text.html.flang",
+  "injections": {
+    "text.html.basic - (meta.embedded | meta.tag), L:text.html.flang meta.tag, L:text.html.flang source.js": {
+      "patterns": [
+        {
+          "include": "#flang-macro"
+        },
+        {
+          "include": "#flang-call"
+        },
+        {
+          "include": "#flang-client-flang"
         }
-    },
-    "patterns": [{
-            "include": "#comments"
-		}, {
-            "include": "#flang-client-flang"
-		}, {
-            "include": "#flang-call"
-		}, {
-            "include": "#flang-use"
-		}, {
-            "include": "#flang-macro-definition"
-        }, {
-            "include": "#flang-code-block"
-        }, {
-            "include": "#flang-macro"
-        }, {
-            "include": "#flang-open-bracket"
-        }, {
-            "include": "#flang-close-bracket"
-		}, {
-            "include": "#flang-event-handeler"
-        }, {
-            "include": "text.html.basic"
-        }
-    ],
-    "repository": {
-        "comments": {
-            "begin": "\\/\\*",
-            "captures": {
-                "0": {
-                    "name": "punctuation.definition.comment.source.flang"
-                }
-            },
-            "end": "\\*\\/",
-            "name": "comment.block.flang"
-        },
-		"flang-client-flang": {
-            "name": "meta.expression.client.flang",
-            "match": "(<\\()(@\\w+)(\\)>)",
-            "captures": {
-				"1": {
-					"name": "constant.character.escape.flang"
-                },
-                "2": {
-                    "name": "punctuation.section.embedded.flang"
-                },
-				"3": {
-					"name": "constant.character.escape.flang"
-                }
-            }
-        },
-		"flang-call": {
-            "name": "meta.expression.explicit.flang",
-            "match": "(<\\()(\\=\\w+)\\(.*\\)(\\)>)",
-            "captures": {
-				"1": {
-					"name": "constant.character.escape.flang"
-                },
-                "2": {
-                    "name": "punctuation.definition.heading.flang"
-                },
-				"3": {
-					"name": "constant.character.escape.flang"
-                }
-            }
-        },
-		"flang-keywords": {
-			"match": "(clientFlang)|(void)",
-			"captures": {
-				"0": {
-                    "name": "keyword.control.flang"
-                }
-            }
-		},
-		"flang-use": {
-			"match": "^(#use)\\s((clientFlang)|(macros))",
-			"captures": {
-				"1": {
-                    "name": "keyword.control.define.c.flang"
-                },
-                "2": {
-                    "name": "punctuation.definition.bold.flang"
-                }
-            }
-		},
-		"flang-macro-definition": {
-			"name": "meta.preprocessor.define.c",
-			"match": "^(#define)\\s+(\\w+)\\s*\\(([^)]*)\\)\\s*(.+)\\s*$",
-			"captures": {
-				"1": { "name": "keyword.control.define.c.flang" },
-				"2": { "name": "keyword.control.define.c.flang" },
-				"3": { "name": "variable.parameter.preprocessor.c.flang" },
-				"4": { "name": "support.function.preprocessor.c.flang" }
-			}
-		},
-        "flang-code-block": {
-            "begin": "<\\((flang|clientFlang)",
-            "captures": {
-                "0": {
-                    "name": "keyword.control.flang"
-                }
-            },
-            "patterns": [{
-                    "include": "#flang-keywords"
-                }, {
-                    "include": "source.php"
-                }
-            ],
-            "end": "\\)>"
-        },
-        "flang-macro": {
-            "name": "meta.expression.implicit.flang",
-            "match": "(?<!<\\()(\\@)(\\w+)(\\()",
-            "captures": {
-                "0": {
-                    "name": "keyword.control.define.c"
-                }
-            }
-        },
-        "flang-open-bracket": {
-            "match": "\\{",
-            "name": "keyword.control.flang"
-        },
-        "flang-close-bracket": {
-            "match": "\\}",
-            "name": "keyword.control.flang"
-        },
-		"flang-event-handeler": {
-            "match": "<\\$clientEventHandeler\\$>",
-            "name": "keyword.control.flang"
-        }   
+      ]
     }
+  },
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#flang-client-flang"
+    },
+    {
+      "include": "#flang-call"
+    },
+    {
+      "include": "#flang-use"
+    },
+    {
+      "include": "#flang-macro-definition"
+    },
+    {
+      "include": "#flang-code-block"
+    },
+    {
+      "include": "#flang-macro"
+    },
+    {
+      "include": "#flang-open-bracket"
+    },
+    {
+      "include": "#flang-close-bracket"
+    },
+    {
+      "include": "#flang-event-handeler"
+    },
+    {
+      "include": "text.html.basic"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "begin": "\\/\\*",
+      "captures": {
+        "0": {
+          "name": "punctuation.definition.comment.source.flang"
+        }
+      },
+      "end": "\\*\\/",
+      "name": "comment.block.flang"
+    },
+    "flang-client-flang": {
+      "name": "meta.expression.client.flang",
+      "match": "(<\\()(@\\w+)(\\)>)",
+      "captures": {
+        "1": {
+          "name": "constant.character.escape.flang"
+        },
+        "2": {
+          "name": "punctuation.section.embedded.flang"
+        },
+        "3": {
+          "name": "constant.character.escape.flang"
+        }
+      }
+    },
+    "flang-call": {
+      "name": "meta.expression.explicit.flang",
+      "match": "(<\\()(\\=\\w+)\\(.*\\)(\\)>)",
+      "captures": {
+        "1": {
+          "name": "constant.character.escape.flang"
+        },
+        "2": {
+          "name": "punctuation.definition.heading.flang"
+        },
+        "3": {
+          "name": "constant.character.escape.flang"
+        }
+      }
+    },
+    "flang-keywords": {
+      "match": "(clientFlang)|(void)",
+      "captures": {
+        "0": {
+          "name": "keyword.control.flang"
+        }
+      }
+    },
+    "flang-use": {
+      "match": "^(#use)\\s((clientFlang)|(macros)|(printedHtml))",
+      "captures": {
+        "1": {
+          "name": "keyword.control.define.c.flang"
+        },
+        "2": {
+          "name": "punctuation.definition.bold.flang"
+        }
+      }
+    },
+    "flang-macro-definition": {
+      "name": "meta.preprocessor.define.c",
+      "match": "^(#define)\\s+(\\w+)\\s*\\(([^)]*)\\)\\s*(.+)\\s*$",
+      "captures": {
+        "1": { "name": "keyword.control.define.c.flang" },
+        "2": { "name": "keyword.control.define.c.flang" },
+        "3": { "name": "variable.parameter.preprocessor.c.flang" },
+        "4": { "name": "support.function.preprocessor.c.flang" }
+      }
+    },
+    "flang-code-block": {
+      "begin": "<\\((flang|clientFlang)",
+      "captures": {
+        "0": {
+          "name": "keyword.control.flang"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#flang-keywords"
+        },
+        {
+          "include": "source.php"
+        }
+      ],
+      "end": "\\)>"
+    },
+    "flang-macro": {
+      "name": "meta.expression.implicit.flang",
+      "match": "(?<!<\\()(\\@)(\\w+)(\\()",
+      "captures": {
+        "0": {
+          "name": "keyword.control.define.c"
+        }
+      }
+    },
+    "flang-open-bracket": {
+      "match": "\\{",
+      "name": "keyword.control.flang"
+    },
+    "flang-close-bracket": {
+      "match": "\\}",
+      "name": "keyword.control.flang"
+    },
+    "flang-event-handeler": {
+      "match": "<\\$clientEventHandeler\\$>",
+      "name": "keyword.control.flang"
+    }
+  }
 }
