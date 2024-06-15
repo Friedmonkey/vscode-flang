@@ -29,6 +29,9 @@
       "include": "#flang-use"
     },
     {
+      "include": "#flang-include"
+    },
+    {
       "include": "#flang-macro-definition"
     },
     {
@@ -104,6 +107,17 @@
     },
     "flang-use": {
       "match": "^(#use)\\s((clientFlang)|(macros)|(printedHtml))",
+      "captures": {
+        "1": {
+          "name": "keyword.control.define.c.flang"
+        },
+        "2": {
+          "name": "punctuation.definition.bold.flang"
+        }
+      }
+    },
+    "flang-include": {
+      "match": "^(#include)\\s\"(.+)\"",
       "captures": {
         "1": {
           "name": "keyword.control.define.c.flang"
