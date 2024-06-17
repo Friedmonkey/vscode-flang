@@ -109,7 +109,7 @@
       }
     },
     "flang-use": {
-      "match": "^(#use)\\s((clientFlang)|(macros)|(printedHtml))",
+      "match": "^\\s*(#use)\\s((clientFlang)|(macros)|(printedHtml))",
       "captures": {
         "1": {
           "name": "keyword.control.define.c.flang"
@@ -120,19 +120,19 @@
       }
     },
     "flang-include": {
-      "match": "^(#include)\\s\"(.+)\"",
+      "match": "^\\s*(#include)\\s\"(.+)\"",
       "captures": {
         "1": {
           "name": "keyword.control.define.c.flang"
         },
         "2": {
-          "name": "punctuation.definition.bold.flang"
+          "name": "string.quoted.double.flang"
         }
       }
     },
     "flang-macro-definition": {
       "name": "meta.preprocessor.define.c",
-      "match": "^(#define)\\s+(\\w+)\\s*\\(([^)]*)\\)\\s*(.+)\\s*$",
+      "match": "^\\s*(#define)\\s+(\\w+)\\s*\\(([^)]*)\\)\\s*(.+)\\s*$",
       "captures": {
         "1": { "name": "keyword.control.define.c.flang" },
         "2": { "name": "keyword.control.define.c.flang" },
@@ -142,7 +142,7 @@
     },
     "flang-multiline-macro-definition": {
       "name": "meta.preprocessor.define.c.flang",
-      "match": "^(#define)\\s+(\\w+)\\s*\\(([^)]*)\\)",
+      "match": "^\\s*(#define)\\s+(\\w+)\\s*\\(([^)]*)\\)",
       "captures": {
         "1": { "name": "keyword.control.define.c.flang" },
         "2": { "name": "entity.name.function.preprocessor.c.flang" },
@@ -151,7 +151,7 @@
     },
     "flang-component-macro-definition": {
       "name": "meta.preprocessor.define.c.flang",
-      "match": "^(#define)\\s+<(\\w+)\\/?>\\s*\\(([^)]*)\\)",
+      "match": "^\\s*(#define)\\s+<(\\w+)\\/?>\\s*\\(([^)]*)\\)",
       "captures": {
         "1": { "name": "keyword.control.define.c.flang" },
         "2": { "name": "entity.name.function.preprocessor.c.flang" },
