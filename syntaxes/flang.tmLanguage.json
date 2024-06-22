@@ -10,6 +10,9 @@
           "include": "#flang-call"
         },
         {
+          "include": "#flang-print"
+        },
+        {
           "include": "#flang-client-flang"
         }
       ]
@@ -20,10 +23,16 @@
       "include": "#comments"
     },
     {
+      "include": "#flang-call"
+    },
+    {
       "include": "#flang-client-flang"
     },
     {
-      "include": "#flang-call"
+      "include": "#flang-print"
+    },
+    {
+      "include": "#flang-on-call"
     },
     {
       "include": "#flang-use"
@@ -42,6 +51,12 @@
     },
     {
       "include": "#flang-code-block"
+    },
+    {
+      "include": "#flang-call-block"
+    },
+    {
+      "include": "#flang-call-match"
     },
     {
       "include": "#flang-macro"
@@ -85,7 +100,7 @@
         }
       }
     },
-    "flang-call": {
+    "flang-print": {
       "name": "meta.expression.explicit.flang",
       "match": "(<\\()(\\=\\w+)\\(.*\\)(\\)>)",
       "captures": {
@@ -109,7 +124,7 @@
       }
     },
     "flang-use": {
-      "match": "^\\s*(#use)\\s((clientFlang)|(macros)|(printedHtml))",
+      "match": "^\\s*(#use)\\s((clientFlang)|(macros)|(printedHtml)|(call))",
       "captures": {
         "1": {
           "name": "keyword.control.define.c.flang"
@@ -175,6 +190,64 @@
         }
       ],
       "end": "\\)>"
+    },
+    "flang-call-block": {
+      "begin": "<{",
+      "captures": {
+        "0": {
+          "name": "keyword.control.flang"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#flang-keywords"
+        },
+        {
+          "include": "source.php"
+        }
+      ],
+      "end": "}>"
+    },
+    "flang-on-call": {
+      "begin": "(@oncall)",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.flang"
+        }
+      },
+      "end": "(?<=\\))",
+      "patterns": [
+        {
+          "include": "source.php"
+        }
+      ]
+    },
+    "flang-call": {
+      "match": "(@call\\s)",
+      "patterns": [
+        {
+          "include": "keyword.control.flang"
+        }
+      ]
+    },
+    "flang-call-match": {
+      "begin": "<\\((default|load|loading|javascript|jsbefore|jsafter):",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.flang"
+        }
+      },
+      "end": "\\)>",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.flang"
+        }
+      },
+      "patterns": [
+        {
+          "include": "text.html.basic"
+        }
+      ]
     },
     "flang-macro": {
       "name": "meta.expression.implicit.flang",
